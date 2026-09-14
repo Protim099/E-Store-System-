@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header><div class="logo">eStore</div><nav><a href="index.html">Home</a><a href="products.html">Products</a><a href="cart.html">Cart 🛒</a></nav></header>
+<section class="section"><div id="details" class="details"></div></section>
+<script>
+const id=new URLSearchParams(location.search).get('id');
+fetch('http://127.0.0.1:8000/api/products/'+id+'/').then(r=>r.json()).then(p=>{
+document.getElementById('details').innerHTML=`<img src="${p.image||'https://via.placeholder.com/500'}"><div><h1>${p.name}</h1><p>${p.description}</p><h2>৳${p.price}</h2><p>Stock: ${p.stock}</p><button onclick="add()">Add to Cart</button></div>`;
+window.product=p;
+});
+function add(){let c=JSON.parse(localStorage.getItem('cart')||'[]');c.push(window.product);localStorage.setItem('cart',JSON.stringify(c));alert('Added to cart');}
+</script></body></html>

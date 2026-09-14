@@ -1,0 +1,3 @@
+const API='http://127.0.0.1:8000/api/products/';
+async function load(){try{const r=await fetch(API);const data=await r.json();const box=document.getElementById('product-container');data.slice(0,8).forEach(p=>{box.innerHTML+=card(p)})}catch(e){console.error(e)}}
+function card(p){return `<div class="card"><img src="${p.image||'https://via.placeholder.com/300'}"><h3>${p.name}</h3><p>${p.description.slice(0,80)}</p><div class="price">৳${p.price}</div><a class="btn" href="product-details.html?id=${p.id}">View Product</a></div>`}load();

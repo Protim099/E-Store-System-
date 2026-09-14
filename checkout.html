@@ -1,0 +1,4 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Checkout</title><link rel="stylesheet" href="css/style.css"></head>
+<body><div class="auth"><h1>Checkout</h1><input placeholder="Full Name"><input placeholder="Phone Number"><textarea placeholder="Delivery Address"></textarea><select><option>Cash on Delivery</option><option>Online Payment</option></select><button onclick="placeOrder()">Place Order</button></div>
+<script>function placeOrder(){localStorage.removeItem('cart');alert('Order placed successfully!');location.href='index.html';}</script></body></html>

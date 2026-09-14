@@ -1,0 +1,4 @@
+let all=[];
+async function loadProducts(){const r=await fetch('http://127.0.0.1:8000/api/products/');all=await r.json();render(all)}
+function render(items){const box=document.getElementById('products');box.innerHTML=items.map(p=>`<div class="card"><img src="${p.image||'https://via.placeholder.com/300'}"><h3>${p.name}</h3><p>${p.description}</p><div class="price">৳${p.price}</div><a class="btn" href="product-details.html?id=${p.id}">View</a></div>`).join('')}
+function filterProducts(){const q=document.getElementById('search').value.toLowerCase();render(all.filter(p=>p.name.toLowerCase().includes(q)))}loadProducts();
